@@ -2,8 +2,8 @@
 
 import { redirect } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
-import { connectDB } from "../modules/db/db";
-import AuthCodeRequests from "../modules/db/models/authCodeRequests";
+import { connectDB } from "../lib/modules/db/db";
+import AuthCodeRequests from "../lib/modules/db/models/authCodeRequests";
 import { cookies } from "next/headers";
 
 export const enter = async () => {
@@ -18,7 +18,7 @@ export const enter = async () => {
         response_type: "code",
         redirect_uri: process.env.SPOTIFY_AUTH_REDIRECT_URL as string,
         state,
-        scope: "user-read-private user-read-email",
+        scope: "user-read-private user-read-email user-read-playback-state user-read-recently-played",
         show_dialog: false,
     };
 

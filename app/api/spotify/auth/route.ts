@@ -4,7 +4,7 @@ import Tokens from "@/app/lib/modules/db/models/tokens";
 import Users from "@/app/lib/modules/db/models/users";
 import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
-import { createSession } from "@/app/lib/server/session";
+import { createSession } from "@/app/server/session";
 import { registerEmail } from "@/app/lib/modules/email/models/register";
 
 export const GET = async (req: NextRequest) => {
@@ -72,7 +72,9 @@ export const GET = async (req: NextRequest) => {
         await Tokens.create({ userID, token: token.data });
 
         /* log user in */
-        return await createSession(userID);
+        await createSession(userID);
+
+        return NextResponse.json(200);
     }
 
     /* register user */
@@ -90,5 +92,7 @@ export const GET = async (req: NextRequest) => {
 
     await registerEmail(profile.data.email);
 
-    return await createSession(userID);
+    await createSession(userID);
+
+    return NextResponse.json(200);
 };

@@ -1,15 +1,20 @@
 import mongoose, { Schema } from "mongoose";
 
-const Tokens_Schema = new Schema({
-    userID: {
-        type: String,
-        required: true,
+const Tokens_Schema = new Schema(
+    {
+        userID: {
+            type: String,
+            required: true,
+        },
+        token: {
+            type: Object,
+            required: true,
+        },
     },
-    token: {
-        type: Object,
-        required: true,
-    },
-});
+    {
+        timestamps: true,
+    }
+);
 
 const Tokens =
     mongoose.models.Tokens || mongoose.model("Tokens", Tokens_Schema);

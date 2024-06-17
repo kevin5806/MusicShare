@@ -4,10 +4,9 @@ import { cookies } from "next/headers";
 import { v4 as uuidv4 } from "uuid";
 import Sessions from "@/app/lib/modules/db/models/sessions";
 import { redirect } from "next/navigation";
-import Users from "../modules/db/models/users";
-import { connectDB } from "../modules/db/db";
+import { connectDB } from "../lib/modules/db/db";
 
-export const createSession = async (userID: String) => {
+export const createSession = async (userID: string) => {
     await connectDB();
 
     const uuid = uuidv4() + uuidv4() + uuidv4() + uuidv4();

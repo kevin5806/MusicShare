@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+body {
+    color: rgb(255, 255, 255);
+    background: rgba(18, 18, 18, 255);
+}
+
+.time-range::-webkit-progress-bar {
+    background-color: transparent;
+}
+
+.time-range::-webkit-progress-value {
+    background-color: rgb(255, 255, 255);
+}
