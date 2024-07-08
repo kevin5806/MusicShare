@@ -5,7 +5,7 @@ const Device = ({ device }: any) => {
         <div>
             <div className="flex items-center gap-3 ">
                 <Image
-                    src={`/svg/${device?.type}-white.svg`}
+                    src={"/svg/" + device?.type + "-white.svg"}
                     alt="current-device"
                     height={30}
                     width={30}

@@ -4,7 +4,7 @@ import { setPlaybackVolume } from "@/app/server/spotify";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const Listening = ({ listening, userID }: any) => {
+const Playback = ({ playback, userID }: any) => {
     const [volume, setVolume]: any = useState(0);
 
     const handleVolumeChange = (e: any) => {
@@ -16,8 +16,8 @@ const Listening = ({ listening, userID }: any) => {
     };
 
     useEffect(() => {
-        setVolume(listening?.device?.volume_percent as number);
-    }, [listening]);
+        setVolume(playback?.device?.volume_percent as number);
+    }, [playback]);
 
     return (
         <div className="flex flex-col gap-y-3">
@@ -40,7 +40,7 @@ const Listening = ({ listening, userID }: any) => {
 
                         <Image
                             draggable="false"
-                            src={listening.item?.album.images[1]?.url}
+                            src={playback?.item?.album.images[1]?.url}
                             alt="currently-paying-track-cover"
                             height={150}
                             width={150}
@@ -49,20 +49,20 @@ const Listening = ({ listening, userID }: any) => {
 
                     <progress
                         className="h-1 w-full time-range"
-                        value={listening.progress_ms}
-                        max={listening.item?.duration_ms}
+                        value={playback.progress_ms}
+                        max={playback.item?.duration_ms}
                     ></progress>
                 </div>
             </div>
             <div>
-                <p>{listening?.item?.name}</p>
+                <p>{playback?.item?.name}</p>
                 <p>
                     By:
-                    {listening?.item?.artists?.map((e: any) => ` ${e.name} `)}
+                    {playback?.item?.artists?.map((e: any) => ` ${e.name} `)}
                 </p>
             </div>
         </div>
     );
 };
 
-export default Listening;
+export default Playback;

@@ -18,7 +18,7 @@ export default async function Page({ params }: any) {
         <div className="m-3">
             <Link href="/dashboard" className="flex gap-x-3 items-center">
                 <Image
-                    src="/svg/back-white.svg"
+                    src="/svg/arrow-white.svg"
                     alt="back-arrow"
                     height={48}
                     width={48}

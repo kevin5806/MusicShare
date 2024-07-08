@@ -1,17 +1,23 @@
 "use client";
 
+import "@/app/css/flip.css";
+
 import { useEffect, useState } from "react";
-import Device from "./device";
-import Listening from "./listening";
 import { getPlaybackState, getQueue } from "@/app/server/spotify";
+
+import Image from "next/image";
+import Device from "./device";
 import Queue from "./queue";
+import Playback from "./playback";
 import AddQueue from "./addQueue";
 
 const Realtime = ({ userID, sessionID }: any) => {
-    const [listening, setListening]: any = useState({});
-    const [sessionPLayback, setSessionPLayback]: any = useState({})
+    const [playback, setPlayback]: any = useState({});
+    const [sessionPLayback, setSessionPLayback]: any = useState({});
     const [queue, setQueue]: any = useState({});
     const [clock, setClock]: any = useState(0);
+
+    const [flip, setFlip]: any = useState(false);
 
     useEffect(() => {
         const i1 = setInterval(() => {
@@ -25,7 +31,7 @@ const Realtime = ({ userID, sessionID }: any) => {
 
     useEffect(() => {
         const run: any = async () => {
-            setListening(await getPlaybackState(userID));
+            setPlayback(await getPlaybackState(userID));
             setQueue(await getQueue(userID));
             setSessionPLayback(await getPlaybackState(sessionID));
             setClock(0);
@@ -38,11 +44,62 @@ const Realtime = ({ userID, sessionID }: any) => {
     }, [userID, sessionID]);
 
     return (
-        <div className="bg-neutral-800">
-            <p>{clock}</p>
-            <Device device={listening.device} />
-            <Listening userID={userID} listening={listening} />
-            <Queue queue={queue} userID={userID} sessionID={sessionID} sessionPLayback={sessionPLayback} />
+        <div
+            className={`w-fit p-5 bg-neutral-800 rounded transition-transform duration-700 preserve-3d ${
+                flip ? "rotate-x-180" : ""
+            }`}
+        >
+            {flip ? (
+                <article className="flex flex-col gap-2 backface-hidden transform rotate-x-180">
+                    <AddQueue
+                        userID={userID}
+                        sessionID={sessionID}
+                        sessionPLayback={sessionPLayback}
+                    />
+
+                    <button
+                        className="w-full flex justify-center"
+                        onClick={() => {
+                            setFlip(!flip);
+                        }}
+                    >
+                        <Image
+                            className="-rotate-90"
+                            src="/svg/arrow-white.svg"
+                            alt="back-arrow"
+                            height={24}
+                            width={24}
+                        />
+                    </button>
+                </article>
+            ) : (
+                <article className="flex flex-col gap-3 backface-hidden">
+                    <div className="flex items-center justify-between">
+                        <Device device={playback?.device} />
+                        <p>{clock}</p>
+                    </div>
+
+                    <Playback userID={userID} playback={playback} />
+
+                    <button
+                        className="flex items-center gap-3"
+                        onClick={() => {
+                            setFlip(!flip);
+                        }}
+                    >
+                        <Image
+                            className="m-1.5"
+                            draggable="false"
+                            src="/svg/queue-white.svg"
+                            alt="add-song"
+                            height={36}
+                            width={36}
+                        />
+                        <p>Add Song</p>
+                    </button>
+                    <Queue queue={queue} />
+                </article>
+            )}
         </div>
     );
 };

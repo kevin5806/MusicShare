@@ -1,0 +1,11 @@
+.preserve-3d {
+    transform-style: preserve-3d;
+}
+
+.rotate-x-180 {
+    transform: rotatex(-180deg);
+}
+
+.backface-hidden {
+    backface-visibility: hidden;
+}
