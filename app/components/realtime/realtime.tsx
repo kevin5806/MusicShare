@@ -9,6 +9,7 @@ import AddQueue from "./addQueue";
 
 const Realtime = ({ userID, sessionID }: any) => {
     const [listening, setListening]: any = useState({});
+    const [sessionPLayback, setSessionPLayback]: any = useState({})
     const [queue, setQueue]: any = useState({});
     const [clock, setClock]: any = useState(0);
 
@@ -26,21 +27,22 @@ const Realtime = ({ userID, sessionID }: any) => {
         const run: any = async () => {
             setListening(await getPlaybackState(userID));
             setQueue(await getQueue(userID));
+            setSessionPLayback(await getPlaybackState(sessionID));
             setClock(0);
         };
 
-        //run();
+        run();
 
-        const i15 = setInterval(run, 15000);
+        const i15 = setInterval(run, 10000);
         return () => clearInterval(i15);
-    }, [userID]);
+    }, [userID, sessionID]);
 
     return (
         <div className="bg-neutral-800">
             <p>{clock}</p>
             <Device device={listening.device} />
             <Listening userID={userID} listening={listening} />
-            <Queue queue={queue} userID={userID} sessionID={sessionID} />
+            <Queue queue={queue} userID={userID} sessionID={sessionID} sessionPLayback={sessionPLayback} />
         </div>
     );
 };

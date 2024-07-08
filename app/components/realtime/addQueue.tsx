@@ -7,7 +7,7 @@ import { useState } from "react";
 
 /* All of the code in here is refered to the user visiting the page */
 
-const AddQueue = ({ userID, sessionID, playBack }: any) => {
+const AddQueue = ({ userID, sessionID, sessionPLayback }: any) => {
     const [searchResult, setSearchResult] = useState([]);
 
     const handleSearchInput = async (e: any) => {
@@ -30,8 +30,6 @@ const AddQueue = ({ userID, sessionID, playBack }: any) => {
                 />
                 <p>Add Song</p>
             </div> */}
-
-            <p>{playBack?.name}</p>
 
             <h2>Add</h2>
 
@@ -77,18 +75,18 @@ const AddQueue = ({ userID, sessionID, playBack }: any) => {
                 <p>Currently playing song</p>
                 <div
                     onClick={async () => {
-                        await addQueue(userID, playBack.uri);
+                        await addQueue(userID, sessionPLayback?.item?.uri);
                     }}
                     className="flex items-center gap-3"
                 >
                     <Image
                         draggable="false"
-                        src={playBack?.album?.images[2].url}
+                        src={sessionPLayback?.item?.album?.images[2].url}
                         alt="currently-playing-tack-cover"
                         height={64}
                         width={64}
                     />
-                    <p>{playBack?.name}</p>
+                    <p>{sessionPLayback?.item?.name}</p>
                 </div>
             </div>
         </div>
