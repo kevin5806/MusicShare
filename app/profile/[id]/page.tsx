@@ -1,5 +1,5 @@
 import ListeningHistory from "@/app/components/listeningHistory";
-import ListeningRealtime from "@/app/components/listeningRealtime";
+import Realtime from "@/app/components/realtime/realtime";
 import { getUser } from "@/app/server/data";
 import { getSession } from "@/app/server/session";
 import Image from "next/image";
@@ -9,13 +9,16 @@ import { redirect } from "next/navigation";
 export default async function Page({ params }: any) {
     const session = await getSession();
     const user = await getUser(params.id);
+
+    const profileID = user._id.toString();
+
     if (user.error) return redirect("/dashboard");
 
     return (
         <div className="m-3">
             <Link href="/dashboard" className="flex gap-x-3 items-center">
                 <Image
-                    src="/svg/back.svg"
+                    src="/svg/back-white.svg"
                     alt="back-arrow"
                     height={48}
                     width={48}
@@ -25,6 +28,7 @@ export default async function Page({ params }: any) {
 
             <div className="flex items-center gap-x-5 text-4xl font-semibold">
                 <Image
+                    draggable="false"
                     className="rounded-full"
                     src={user.spotifyUser.images[1].url}
                     alt="spotify-currentlyPaying-song"
@@ -33,8 +37,10 @@ export default async function Page({ params }: any) {
                 />
                 <h1>{user.spotifyUser.display_name}</h1>
             </div>
-            <ListeningRealtime userID={params.id} />
-            <ListeningHistory userID={params.id} />
+
+            <Realtime userID={profileID} sessionID={session.userID} />
+
+            <ListeningHistory userID={profileID} />
         </div>
     );
 }

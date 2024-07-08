@@ -6,7 +6,7 @@ import { connectDB } from "../lib/modules/db/db";
 import AuthCodeRequests from "../lib/modules/db/models/authCodeRequests";
 import { cookies } from "next/headers";
 
-export const enter = async () => {
+export const auth = async () => {
     await connectDB();
 
     if(cookies().get("session")) return redirect("/dashboard");
@@ -18,7 +18,7 @@ export const enter = async () => {
         response_type: "code",
         redirect_uri: process.env.SPOTIFY_AUTH_REDIRECT_URL as string,
         state,
-        scope: "user-read-private user-read-email user-read-playback-state user-read-recently-played",
+        scope: "user-read-private user-read-email user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state",
         show_dialog: false,
     };
 
