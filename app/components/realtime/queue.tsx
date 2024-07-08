@@ -1,7 +1,7 @@
 import Image from "next/image";
 import AddQueue from "./addQueue";
 
-const Queue = ({ queue, userID, sessionID }: any) => {
+const Queue = ({ queue, userID, sessionID, sessionPLayback }: any) => {
     return (
         <div>
             <div className="flex flex-col gap-1">
@@ -22,7 +22,7 @@ const Queue = ({ queue, userID, sessionID }: any) => {
             <AddQueue
                 userID={userID}
                 sessionID={sessionID}
-                playBack={queue.currently_playing}
+                sessionPLayback={sessionPLayback}
             />
         </div>
     );

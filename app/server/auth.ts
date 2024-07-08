@@ -5,11 +5,22 @@ import { v4 as uuidv4 } from "uuid";
 import { connectDB } from "../lib/modules/db/db";
 import AuthCodeRequests from "../lib/modules/db/models/authCodeRequests";
 import { cookies } from "next/headers";
+import Sessions from "../lib/modules/db/models/sessions";
 
 export const auth = async () => {
     await connectDB();
 
-    if(cookies().get("session")) return redirect("/dashboard");
+    const cookie = cookies().get("session");
+
+    if (cookie) {
+        const session = await Sessions.findOne({ uuid: cookie.value });
+
+        if (!session) {
+            cookies().delete("session");
+        } else {
+            return redirect("/dashboard");
+        }
+    }
 
     const state: string = uuidv4();
 
