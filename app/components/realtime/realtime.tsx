@@ -31,7 +31,7 @@ const Realtime = ({ userID, sessionID }: any) => {
             setClock(0);
         };
 
-        run();
+        //run();
 
         const i15 = setInterval(run, 10000);
         return () => clearInterval(i15);
