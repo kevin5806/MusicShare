@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getListening } from "../server/spotify";
+import { getPlaybackState } from "../server/spotify";
 import Image from "next/image";
 
 export default function ListeningRealtime({ userID }: any) {
@@ -20,7 +20,7 @@ export default function ListeningRealtime({ userID }: any) {
 
     useEffect(() => {
         const interval = setInterval(async () => {
-            setListening(await getListening(userID));
+            setListening(await getPlaybackState(userID));
             setTime(0);
         }, 15000);
 

@@ -1,10 +1,8 @@
 import Image from "next/image";
-import { getListeningHistory } from "../server/spotify";
+import { getPlaybackHistory } from "../server/spotify";
 
-export default async function ListeningHistory({ userID }: any) {
-    const history: any = await getListeningHistory(userID, 50);
-
-    console.log(history);
+export default async function ListeningHistory({ userID,  }: any) {
+    const history: any = await getPlaybackHistory(userID, 50);
 
     return (
         <div>

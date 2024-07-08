@@ -1,14 +1,14 @@
 import Image from "next/image";
 import { getFriends, getUser } from "../server/data";
-import { getListening, getListeningHistory } from "../server/spotify";
+import { getPlaybackState, getPlaybackHistory } from "../server/spotify";
 
 import "@/app/css/spotify.css";
 import Link from "next/link";
 
 async function Preview({ userID }: any) {
-    const listening: any = await getListening(userID);
+    const listening: any = await getPlaybackState(userID);
 
-    const history: any = await getListeningHistory(userID, 4);
+    const history: any = await getPlaybackHistory(userID, 4);
 
     return (
         <>
@@ -16,12 +16,12 @@ async function Preview({ userID }: any) {
                 <div className="flex flex-col gap-y-5">
                     <div className="flex items-center gap-x-5">
                         {listening?.is_playing ? (
-                            <div className="loader px-3">
-                                <div className="loading">
-                                    <div className="load"></div>
-                                    <div className="load"></div>
-                                    <div className="load"></div>
-                                    <div className="load"></div>
+                            <div className="music-loader px-3">
+                                <div className="music-loading">
+                                    <div className="music-load"></div>
+                                    <div className="music-load"></div>
+                                    <div className="music-load"></div>
+                                    <div className="music-load"></div>
                                 </div>
                             </div>
                         ) : (

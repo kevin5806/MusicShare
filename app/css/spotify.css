@@ -1,4 +1,4 @@
-.loader {
+.music-loader {
     display: flex;
     flex-direction: row;
     height: 4em;
@@ -8,13 +8,13 @@
     transition: 0.4s ease-in-out;
 }
 
-.loading {
+.music-loading {
     display: flex;
     margin-top: 1em;
     margin-left: 0.3em;
 }
 
-.load {
+.music-load {
     width: 2px;
     height: 33px;
     background-color: limegreen;
@@ -23,15 +23,15 @@
     margin: 0.1em;
 }
 
-.load:nth-child(1) {
+.music-load:nth-child(1) {
     animation-delay: 0.2s;
 }
 
-.load:nth-child(2) {
+.music-load:nth-child(2) {
     animation-delay: 0.4s;
 }
 
-.load:nth-child(3) {
+.music-load:nth-child(3) {
     animation-delay: 0.6s;
 }
 
