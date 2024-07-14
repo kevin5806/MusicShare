@@ -45,7 +45,7 @@ export default async function PlaybackHistory({ userID }: any) {
             {items?.map((e: any) => {
                 return (
                     <div key={e} className="flex items-center gap-4">
-                        <div className="ml-3">
+                        <div className="m-2">
                             <Tooltip text={formatTime(e?.played_at)}>
                                 <div className="bg-green-400 rounded-full w-1.5 h-1.5 m-1"></div>
                             </Tooltip>
