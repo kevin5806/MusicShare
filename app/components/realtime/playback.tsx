@@ -49,8 +49,8 @@ const Playback = ({ playback, userID }: any) => {
 
                     <progress
                         className="h-1 w-full time-range"
-                        value={playback.progress_ms}
-                        max={playback.item?.duration_ms}
+                        value={playback?.progress_ms}
+                        max={playback?.item?.duration_ms}
                     ></progress>
                 </div>
             </div>

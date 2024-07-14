@@ -1,4 +1,4 @@
-import ListeningHistory from "@/app/components/listeningHistory";
+import PlaybackHistory from "@/app/components/playbackHistory";
 import Realtime from "@/app/components/realtime/realtime";
 import { getUser } from "@/app/server/data";
 import { getSession } from "@/app/server/session";
@@ -15,7 +15,7 @@ export default async function Page({ params }: any) {
     if (user.error) return redirect("/dashboard");
 
     return (
-        <div className="m-3">
+        <div className="m-3 flex flex-col gap-5">
             <Link href="/dashboard" className="flex gap-x-3 items-center">
                 <Image
                     src="/svg/arrow-white.svg"
@@ -40,7 +40,7 @@ export default async function Page({ params }: any) {
 
             <Realtime userID={profileID} sessionID={session.userID} />
 
-            <ListeningHistory userID={profileID} />
+            <PlaybackHistory userID={profileID} />
         </div>
     );
 }

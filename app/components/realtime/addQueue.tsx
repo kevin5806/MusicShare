@@ -31,7 +31,7 @@ const AddQueue = ({ userID, sessionID, sessionPLayback }: any) => {
                 <Image
                     className="m-1.5"
                     draggable="false"
-                    src="/svg/quueAdd-white.svg"
+                    src="/svg/addQueue-white.svg"
                     alt="add-queue"
                     height={32}
                     width={32}

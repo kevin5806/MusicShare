@@ -1,6 +1,7 @@
 import Friends from "../components/friends";
-import Share from "../components/share";
+import AddFriends from "../components/addFriends";
 import { getSession } from "../server/session";
+import PersonalProfile from "../components/personalProfile";
 
 export default async function Page() {
     const session: any = await getSession();
@@ -9,7 +10,8 @@ export default async function Page() {
         <>
             <h1 className="text-9xl">Dashboard</h1>
 
-            <Share userID={session.userID} />
+            <AddFriends userID={session.userID} />
+            <PersonalProfile userID={session.userID}/>
             <Friends userID={session.userID} />
         </>
     );

@@ -117,6 +117,7 @@ async function Friend({ userID }: any) {
             <div className="flex items-center gap-x-5">
                 <Image
                     className="rounded-full"
+                    draggable="false"
                     src={spotifyUser.images[0].url}
                     alt="spotify-currentlyPaying-song"
                     height={64}
