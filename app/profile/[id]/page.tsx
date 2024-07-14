@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+import { ninja, spray, rage } from "@/app/lib/fonts/fonts";
+
 export default async function Page({ params }: any) {
     const session = await getSession();
     const user = await getUser(params.id);
@@ -15,7 +17,7 @@ export default async function Page({ params }: any) {
     if (user.error) return redirect("/dashboard");
 
     return (
-        <div className="m-3 flex flex-col gap-5">
+        <div className="m-5 flex flex-col gap-5">
             <Link href="/dashboard" className="flex gap-x-3 items-center">
                 <Image
                     src="/svg/arrow-white.svg"
@@ -38,7 +40,15 @@ export default async function Page({ params }: any) {
                 <h1>{user.spotifyUser.display_name}</h1>
             </div>
 
+            <span className={rage.className}>
+                <h1 className="text-3xl">Realtime</h1>
+            </span>
+
             <Realtime userID={profileID} sessionID={session.userID} />
+
+            <span className={spray.className}>
+                <h1 className="flex items-center h-15 mt-5 text-xl">HISTORY</h1>
+            </span>
 
             <PlaybackHistory userID={profileID} />
         </div>

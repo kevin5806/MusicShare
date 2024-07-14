@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { urbanjungle } from "./lib/fonts/fonts";
+import { spray } from "./lib/fonts/fonts";
 import { auth } from "./server/auth";
 import { useState } from "react";
 
@@ -20,9 +20,9 @@ export default function Home() {
                 </div>
             )}
 
-            <main className="flex h-full items-center flex-col gap-y-20">
-                <span className={urbanjungle.className}>
-                    <h1 className="text-9xl text-green-400">SpotiShare</h1>
+            <main className="flex h-full items-center flex-col gap-y-3">
+                <span className={spray.className}>
+                    <h1 className="flex items-center h-40 text-3xl text-white">SPOTISHARE</h1>
                 </span>
                 <button
                     className="bg-green-500 flex justify-center items-center gap-x-2 p-3 rounded-md"
