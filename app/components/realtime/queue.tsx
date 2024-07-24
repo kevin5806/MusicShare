@@ -1,5 +1,6 @@
 import Image from "next/image";
 import AddQueue from "./addQueue";
+import Marquee from "../lib/marquee/marquee";
 
 const Queue = ({ queue }: any) => {
     return (
@@ -15,11 +16,10 @@ const Queue = ({ queue }: any) => {
                             height={48}
                             width={48}
                         />
-                        <p>{track.name}</p>
+                        <Marquee text={track?.name} />
                     </div>
                 ))}
             </div>
-
         </div>
     );
 };

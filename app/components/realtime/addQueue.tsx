@@ -5,6 +5,7 @@ import debounce from "debounce";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
+import Marquee from "../lib/marquee/marquee";
 
 /* All of the code in here is refered to the user visiting the page */
 
@@ -20,10 +21,10 @@ const AddQueue = ({ userID, sessionID, sessionPLayback }: any) => {
         return setSearchResult(tracks);
     };
 
-    const handleTrackClick = async (uri:string) => {
+    const handleTrackClick = async (uri: string) => {
         await addQueue(userID, uri);
         return toast.success("Track added");
-    }
+    };
 
     return (
         <div className="flex flex-col gap-3">
@@ -71,7 +72,8 @@ const AddQueue = ({ userID, sessionID, sessionPLayback }: any) => {
                             width={48}
                             height={48}
                         />
-                        <p>{track.name}</p>
+
+                        <Marquee text={track?.name} />
                     </div>
                 ))}
             </div>

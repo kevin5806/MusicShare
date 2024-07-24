@@ -8,7 +8,7 @@ export const connectDB = async (): Promise<Connection> => {
     if (db) return db;
 
     try {
-        db = (await mongoose.connect(process.env.MONDODB_URL!)).connection;
+        db = (await mongoose.connect(process.env.MONGODB_URL!)).connection;
 
         return db;
     } catch (err) {

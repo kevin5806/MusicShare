@@ -2,6 +2,7 @@ import Image from "next/image";
 import { getPlaybackHistory } from "../server/spotify";
 import { ninja } from "../lib/fonts/fonts";
 import Tooltip from "./lib/tooltips/toolTip";
+import Marquee from "./lib/marquee/marquee";
 
 const formatTime = (savedDate: any) => {
     const now: any = new Date();
@@ -61,7 +62,7 @@ export default async function PlaybackHistory({ userID }: any) {
                                 height={64}
                                 width={64}
                             />
-                            <p>{e.track.name}</p>
+                            <Marquee text={e?.track.name} />
                         </div>
 
                         {e.replayed && (

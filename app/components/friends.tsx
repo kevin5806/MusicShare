@@ -4,6 +4,7 @@ import { getPlaybackState, getPlaybackHistory } from "../server/spotify";
 
 import "@/app/css/spotify.css";
 import Link from "next/link";
+import Marquee from "./lib/marquee/marquee";
 
 async function Preview({ userID }: any) {
     const listening: any = await getPlaybackState(userID);
@@ -43,9 +44,9 @@ async function Preview({ userID }: any) {
                         />
 
                         <span>
-                            <p className="font-semibold">
-                                {listening.item.name}
-                            </p>
+                            <span className="font-semibold">
+                                <Marquee text={listening?.item.name} />
+                            </span>
                             <p className="text-neutral-400">
                                 {listening?.item?.artists[0].name}
                             </p>
@@ -66,9 +67,9 @@ async function Preview({ userID }: any) {
                                     width={48}
                                 />
                                 <span>
-                                    <p className="font-semibold">
-                                        {e.track.name}
-                                    </p>
+                                    <span className="font-semibold">
+                                        <Marquee text={e?.track.name} />
+                                    </span>
                                     <p className="text-neutral-400">
                                         {e.track.artists[0].name}
                                     </p>
@@ -139,7 +140,7 @@ export default async function Friends({ userID }: any) {
         <div className="m-5 flex">
             <div className="flex flex-wrap gap-3">
                 {friends.map((e: any) => (
-                    <Link href={"/profile/"+ e.friendID} key={e.friendID}>
+                    <Link href={"/profile/" + e.friendID} key={e.friendID}>
                         <Friend userID={e.friendID} />
                     </Link>
                 ))}

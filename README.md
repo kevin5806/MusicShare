@@ -1,18 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
+## Spotishare
 
 First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
@@ -20,17 +10,37 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## cookies & privacy -> policy
 
-To learn more about Next.js, take a look at the following resources:
+up to date: 24/07/2024
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+services used:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- mongodb atlas
+- nextjs
+- spotify api
+- resend
+- google icons
+- google fonts
+- dafont
+- vercel
+- github
 
-## Deploy on Vercel
+npm dependecises:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- @react-email/components
+- @types/axios
+- @types/uuid
+- axios
+- debounce
+- jose
+- mongoose
+- next
+- react
+- react-dom
+- react-email
+- resend
+- sonner
+- uuid
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Spotishare is a continuosly developing app so cookies & privacy policy could change a lot, also the third party services used by the app, the major part of the app is behind a login, available to anyone, in order to work with a session the app needs to save a coockie on the client with a key, the key is used from the app to authenticate the user (you), no other data is stored on the client, all the data is stored on the Spotishare database or is pulled from Spotify api, sesitive data like Spotify username, Spotify email are also saved on Spotishare database, also visitor ip could be saved on the Spotishare database for user security purposes, no user data tracking is done by spotishare, the code for the app at some point will even be publishd on github to ensure user data privacy.
