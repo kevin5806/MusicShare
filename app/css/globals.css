@@ -40,8 +40,8 @@ body {
     width: 20px;
     aspect-ratio: 1;
     border-radius: 50%;
-    background: #22c55e;
-    box-shadow: 0 0 0 0 #22c55e44;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.267);
     animation: l2 1.5s infinite linear;
     position: relative;
 }
@@ -51,7 +51,7 @@ body {
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    box-shadow: 0 0 0 0 #22c55e44;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.267);
     animation: inherit;
     animation-delay: -0.5s;
 }
@@ -60,7 +60,7 @@ body {
 }
 @keyframes l2 {
     100% {
-        box-shadow: 0 0 0 40px #0000;
+        box-shadow: 0 0 0 40px rgba(0, 0, 0, 0);
     }
 }
 

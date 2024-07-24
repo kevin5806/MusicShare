@@ -24,7 +24,7 @@ export default function Home() {
             <main className="flex h-full items-center justify-center flex-col gap-8">
                 <span className={spray.className}>
                     <h1 className="flex items-center justify-center text-3xl text-white">
-                        <span className="pt-8">SPOTISHARE</span>
+                        <span className="pt-8">MUSICSHARE</span>
                     </h1>
                 </span>
                 <div className="flex flex-col gap-2 items-center">

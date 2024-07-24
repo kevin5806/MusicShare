@@ -30,7 +30,7 @@ const Legal = () => (
                 </section>
                 <section>
                     <p>
-                        Welcome to Spotishare! We are committed to protecting
+                        Welcome to Musicshare! We are committed to protecting
                         your privacy and ensuring that your personal information
                         is handled in a safe and responsible manner. This
                         Cookies & Privacy Policy explains how we collect, use,
@@ -44,7 +44,7 @@ const Legal = () => (
                     <h2 className="text-2xl font-medium">Services Used</h2>
                 </section>
                 <section>
-                    <p>Spotishare uses the following third-party services:</p>
+                    <p>Musicshare uses the following third-party services:</p>
 
                     <ul className="list-disc pl-6">
                         <li>MongoDB Atlas</li>
@@ -76,11 +76,11 @@ const Legal = () => (
                     <div>
                         <h3 className="text-xl font-medium">Cookies</h3>
                         <p>
-                            To ensure the smooth functioning of Spotishare, we
+                            To ensure the smooth functioning of Musicshare, we
                             need to store a cookie on your device. This cookie
                             contains a key used to authenticate you during your
                             session. No other data is stored on the client side.
-                            All user data is securely stored in the Spotishare
+                            All user data is securely stored in the Musicshare
                             database or fetched from the Spotify API.
                         </p>
                     </div>
@@ -88,7 +88,7 @@ const Legal = () => (
                         <h3 className="text-xl font-medium">Personal Data</h3>
                         <p>
                             Sensitive information such as your Spotify username
-                            and Spotify email is stored in the Spotishare
+                            and Spotify email is stored in the Musicshare
                             database. Additionally, for security purposes, your
                             IP address may also be saved in our database. We do
                             not track user data beyond what is necessary for the
@@ -110,13 +110,13 @@ const Legal = () => (
                             <span className="font-bold">Authentication: </span>
                             The key stored in the cookie is used to authenticate
                             your session and provide access to the logged-in
-                            areas of Spotishare.
+                            areas of Musicshare.
                         </li>
                         <li>
                             <span className="font-bold">Data Storage: </span>
                             Your personal information, including Spotify
                             username, email, and IP address, is stored to
-                            facilitate and secure your use of Spotishare.
+                            facilitate and secure your use of Musicshare.
                         </li>
                         <li>
                             <span className="font-bold">
@@ -139,7 +139,7 @@ const Legal = () => (
                     <p>
                         We may share your information with third-party services
                         listed above solely for the purposes of enhancing
-                        Spotishare&apos;s functionality and user experience.
+                        Musicshare&apos;s functionality and user experience.
                         These services are bound by their own privacy policies
                         regarding the handling of your personal information.
                     </p>
@@ -154,7 +154,7 @@ const Legal = () => (
                     <p>
                         We implement stringent security measures to protect your
                         personal data from unauthorized access, alteration, or
-                        disclosure. Spotishare&apos;s code will be made
+                        disclosure. Musicshare&apos;s code will be made
                         available on GitHub to ensure transparency and further
                         enhance user data privacy.
                     </p>
@@ -169,7 +169,7 @@ const Legal = () => (
                 </section>
                 <section>
                     <p>
-                        Spotishare is continuously evolving, and our Cookies &
+                        Musicshare is continuously evolving, and our Cookies &
                         Privacy Policy may change accordingly. We will notify
                         you of any significant changes by updating the policy on
                         this page. We encourage you to review this policy
@@ -205,7 +205,7 @@ const Legal = () => (
                         kevinservdb@gmail.com.
                     </p>
                     <p>
-                        By using Spotishare, you agree to the terms of this
+                        By using Musicshare, you agree to the terms of this
                         Cookies & Privacy Policy. Thank you for trusting us with
                         your personal information.
                     </p>
