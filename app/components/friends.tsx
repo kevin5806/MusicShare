@@ -93,7 +93,9 @@ async function Preview({ userID }: any) {
                                 width={48}
                             />
                             <span>
-                                <p className="font-semibold">{e.track.name}</p>
+                                <span className="font-semibold">
+                                    <Marquee text={e?.track.name} />
+                                </span>
                                 <p className="text-neutral-400">
                                     {e.track.artists[0].name}
                                 </p>
