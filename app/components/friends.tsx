@@ -67,9 +67,8 @@ async function Preview({ userID }: any) {
                                     width={48}
                                 />
                                 <span>
-                                    <span className="font-semibold">
-                                        <Marquee text={e?.track.name} />
-                                    </span>
+                                    <Marquee text={e?.track.name} />
+
                                     <p className="text-neutral-400">
                                         {e.track.artists[0].name}
                                     </p>
@@ -93,9 +92,8 @@ async function Preview({ userID }: any) {
                                 width={48}
                             />
                             <span>
-                                <span className="font-semibold">
-                                    <Marquee text={e?.track.name} />
-                                </span>
+                                <Marquee text={e?.track.name} />
+
                                 <p className="text-neutral-400">
                                     {e.track.artists[0].name}
                                 </p>
@@ -126,7 +124,9 @@ async function Friend({ userID }: any) {
                     height={64}
                     width={64}
                 />
-                <h3 className="text-lg">{spotifyUser.display_name}</h3>
+                <h3 className="text-lg font-semibold">
+                    {spotifyUser.display_name}
+                </h3>
             </div>
             <div>
                 <Preview userID={userID} />
