@@ -6,6 +6,19 @@ import { auth } from "./server/auth";
 import { useState } from "react";
 import Link from "next/link";
 
+const Footer = () => (
+    <div className="fixed left-0 bottom-0 w-full flex justify-center p-5">
+        <Link href={"https://github.com/kevin5806/MusicShare.git"} target="blank">
+            <Image
+                src="/svg/github-white.svg"
+                alt="github-logo"
+                height={24}
+                width={24}
+            />
+        </Link>
+    </div>
+);
+
 export default function Home() {
     const [loading, setLoading] = useState(false);
 
@@ -50,6 +63,7 @@ export default function Home() {
                         <p>Privacy & Cookies Policy</p>
                     </Link>
                 </div>
+                <Footer />
             </main>
         </>
     );

@@ -25,9 +25,9 @@ const Playback = ({ playback, userID }: any) => {
             <div className="flex gap-x-5">
                 <div className="flex flex-col rounded-lg overflow-hidden">
                     <div className="relative flex items-center">
-                        <label className="absolute w-full h-full -rotate-90 flex items-center cursor-pointer opacity-0 hover:opacity-100">
+                        <label className="absolute w-full h-full -rotate-90 flex items-center cursor-pointer opacity-0 hover:opacity-100 transition">
                             <input
-                                className="volume w-full h-full rounded-lg bg-transparent appearance-none overflow-hidden cursor-pointer"
+                                className="volume w-full h-full bg-transparent appearance-none overflow-hidden cursor-pointer"
                                 type="range"
                                 value={volume}
                                 min={0}
@@ -56,10 +56,7 @@ const Playback = ({ playback, userID }: any) => {
             </div>
             <div>
                 <p>{playback?.item?.name}</p>
-                <p>
-                    By:
-                    {playback?.item?.artists?.map((e: any) => ` ${e.name} `)}
-                </p>
+                <p className="text-neutral-400">{playback?.item?.artists?.map((e: any) => ` ${e.name} `)}</p>
             </div>
         </div>
     );

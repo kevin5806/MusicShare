@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { getPlaybackHistory } from "../server/spotify";
 import { ninja } from "../lib/fonts/fonts";
-import Tooltip from "./lib/tooltips/toolTip";
+import Tooltip from "./lib/tooltip/toolTip";
 import Marquee from "./lib/marquee/marquee";
+import Song from "./lib/song/song";
 
 const formatTime = (savedDate: any) => {
     const now: any = new Date();
@@ -52,18 +53,15 @@ export default async function PlaybackHistory({ userID }: any) {
                             </Tooltip>
                         </div>
 
-                        <div className="w-fit p-2 flex items-center gap-3 bg-neutral-800 rounded">
-                            <Image
-                                quality={100}
-                                draggable="false"
-                                className="rounded"
-                                src={e.track.album.images[1].url}
-                                alt="album-img"
-                                height={64}
-                                width={64}
-                            />
-                            <Marquee text={e?.track.name} />
-                        </div>
+                        <Song
+                            size={64}
+                            background
+                            padding={1}
+                            title={e?.track.name}
+                            artist={e?.track.artists}
+                            src={e?.track.album.images[1].url}
+                            href={e?.track.external_urls.spotify}
+                        />
 
                         {e.replayed && (
                             <span className={ninja.className}>

@@ -115,7 +115,7 @@ async function Friend({ userID }: any) {
 
     return (
         <div className="flex flex-col gap-y-3 p-5 rounded w-fit  bg-neutral-800">
-            <div className="flex items-center gap-x-5">
+            <div className="flex items-center gap-5">
                 <Image
                     className="rounded-full"
                     draggable="false"
