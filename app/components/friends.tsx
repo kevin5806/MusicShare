@@ -5,6 +5,7 @@ import { getPlaybackState, getPlaybackHistory } from "../server/spotify";
 import "@/app/css/spotify.css";
 import Link from "next/link";
 import Marquee from "./lib/marquee/marquee";
+import Song from "./lib/song/song";
 
 async function Preview({ userID }: any) {
     const listening: any = await getPlaybackState(userID);
@@ -13,8 +14,8 @@ async function Preview({ userID }: any) {
 
     return (
         <>
-            {listening ? (
-                <div className="flex flex-col gap-y-5">
+            <div className="flex flex-col gap-y-5">
+                {listening && (
                     <div className="flex items-center gap-x-5">
                         {listening?.is_playing ? (
                             <div className="music-loader px-3">
@@ -52,56 +53,26 @@ async function Preview({ userID }: any) {
                             </p>
                         </span>
                     </div>
+                )}
 
-                    <div className="flex flex-col gap-y-3">
-                        {history.items.map((e: any) => (
-                            <div
-                                className="flex items-center gap-x-5"
-                                key={e.track.id}
-                            >
-                                <Image
-                                    className="rounded"
-                                    src={e.track.album.images[2].url}
-                                    alt="album-img"
-                                    height={48}
-                                    width={48}
-                                />
-                                <span>
-                                    <Marquee text={e?.track.name} />
-
-                                    <p className="text-neutral-400">
-                                        {e.track.artists[0].name}
-                                    </p>
-                                </span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            ) : (
                 <div className="flex flex-col gap-y-3">
                     {history.items.map((e: any) => (
                         <div
-                            className="flex items-center gap-x-5"
+                            className="flex items-center gap-3"
                             key={e.track.id}
                         >
-                            <Image
-                                className="rounded"
-                                src={e.track.album.images[2].url}
-                                alt="album-img"
-                                height={48}
-                                width={48}
+                            <Song
+                                size={48}
+                                background
+                                title={e?.track.name}
+                                artist={e?.track.artists}
+                                src={e?.track.album.images[2].url}
+                                href={e?.track.external_urls.spotify}
                             />
-                            <span>
-                                <Marquee text={e?.track.name} />
-
-                                <p className="text-neutral-400">
-                                    {e.track.artists[0].name}
-                                </p>
-                            </span>
                         </div>
                     ))}
                 </div>
-            )}
+            </div>
         </>
     );
 }
