@@ -56,12 +56,12 @@ const AddQueue = ({ userID, sessionID, sessionPLayback }: any) => {
             </div>
 
             <div className="flex flex-col gap-1">
-                {searchResult?.map((track: any) => (
+                {searchResult?.map((track: any, index:any) => (
                     <div
                         onClick={async () => {
                             await handleTrackClick(track.uri);
                         }}
-                        key={track.id}
+                        key={index}
                         className="flex items-center gap-3 hover:bg-neutral-700 rounded p-1 cursor-pointer"
                     >
                         <Image
@@ -73,7 +73,7 @@ const AddQueue = ({ userID, sessionID, sessionPLayback }: any) => {
                             height={48}
                         />
 
-                        <Marquee text={track?.name} />
+                        <Marquee text={track?.name}/>
                     </div>
                 ))}
             </div>

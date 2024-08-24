@@ -19,19 +19,12 @@ body {
     background: rgba(18, 18, 18, 255);
 }
 
-.time-range::-webkit-progress-bar {
+.range-bar::-webkit-progress-bar {
     background-color: transparent;
 }
 
-.time-range::-webkit-progress-value {
+.range-bar::-webkit-progress-value {
     background-color: rgb(255, 255, 255);
-}
-
-.volume::-webkit-slider-thumb {
-    appearance: none;
-    height: 0;
-    width: 0;
-    box-shadow: -200px 0 0 200px #fff;
 }
 
 /* HTML: <div class="loader"></div> */

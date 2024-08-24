@@ -75,7 +75,7 @@ const Realtime = ({ userID, sessionID }: any) => {
                             </button>
                         </article>
                     ) : (
-                        <article className="flex flex-col gap-3 backface-hidden">
+                        <article className="flex flex-shrink flex-col gap-3 backface-hidden">
                             <div className="flex items-center justify-between">
                                 <Device device={playback?.device} />
                                 <p>{clock}</p>
@@ -84,19 +84,21 @@ const Realtime = ({ userID, sessionID }: any) => {
                             <Playback userID={userID} playback={playback} />
 
                             <button
-                                className="flex items-center gap-3"
+                                className="flex items-center gap-2.5"
                                 onClick={() => {
                                     setFlip(!flip);
                                 }}
-                            >
+                            >   
+                            <div className="size-12 flex justify-center items-center">
+
                                 <Image
-                                    className="m-1.5"
                                     draggable="false"
                                     src="/svg/queue-white.svg"
                                     alt="add-song"
-                                    height={36}
-                                    width={36}
+                                    height={32}
+                                    width={32}
                                 />
+                            </div>
                                 <p>Add Song</p>
                             </button>
                             <Queue queue={queue} />

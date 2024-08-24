@@ -4,19 +4,6 @@ import Artist from "./artist";
 import Cover from "./cover";
 import Title from "./title";
 
-/* 
-        () = comment
-        " "; = type
-        [] = possible form
-
-        size: Number; ("image size, component size")
-        background: String; [no, default, #color] ("dose the component have a background")
-        title: String; ("song name")
-        artist: String[]; ("song artists")
-        src: String; ("image src")
-        hrfe: String; ("href link")
-    */
-
 const Song = ({
     size,
     background,
@@ -29,9 +16,9 @@ const Song = ({
 }: any) => {
     const [onHover, setOnHover]: any = useState(false);
 
-    let backgroundClass;
-    let hoverClass;
-    let paddingClass;
+    let backgroundClass ="";
+    let hoverClass = "";
+    let paddingClass ="";
 
     if (background === true) {
         /* default bg */
@@ -42,10 +29,10 @@ const Song = ({
     }
 
     if (hover === true) {
-        /* default bg */
+        /* default hover bg */
         hoverClass = "hover:bg-neutral-700";
     } else if (hover) {
-        /* personal bg */
+        /* personal hover bg */
         hoverClass = `hover:${hover}`;
     }
 
@@ -55,17 +42,13 @@ const Song = ({
 
     return (
         <div
-            className={`${hoverClass} ${backgroundClass} ${paddingClass} w-fit flex items-center transition rounded overflow-hidden`}
-            onMouseEnter={() => {
-                setOnHover(true);
-            }}
-            onMouseLeave={() => {
-                setOnHover(false);
-            }}
+            className={`${hoverClass} ${backgroundClass} ${paddingClass} max-w-96 gap-2 w-full flex items-center justify-center rounded overflow-hidden`}
+            onMouseEnter={() => setOnHover(true)}
+            onMouseLeave={() => setOnHover(false)}
         >
             <Cover onHover={onHover} size={size} src={src} href={href} />
 
-            <div className="mx-3">
+            <div className="flex-grow overflow-hidden">
                 <Title title={title} />
                 <Artist artist={artist} />
             </div>

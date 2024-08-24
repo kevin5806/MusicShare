@@ -1,8 +1,6 @@
-import Image from "next/image";
 import { getPlaybackHistory } from "../server/spotify";
 import { ninja } from "../lib/fonts/fonts";
 import Tooltip from "./lib/tooltip/toolTip";
-import Marquee from "./lib/marquee/marquee";
 import Song from "./lib/song/song";
 
 const formatTime = (savedDate: any) => {
@@ -44,12 +42,12 @@ export default async function PlaybackHistory({ userID }: any) {
 
     return (
         <div className="flex flex-col gap-3">
-            {items?.map((e: any) => {
+            {items?.map((e: any, index:any) => {
                 return (
-                    <div key={e} className="flex items-center gap-4">
+                    <div key={index} className="flex items-center gap-4">
                         <div className="m-2">
                             <Tooltip text={formatTime(e?.played_at)}>
-                                <div className="bg-green-400 rounded-full w-1.5 h-1.5 m-1"></div>
+                                <div className="bg-green-400 rounded-full w-2 h-2 m-1"></div>
                             </Tooltip>
                         </div>
 

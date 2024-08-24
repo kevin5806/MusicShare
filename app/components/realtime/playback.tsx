@@ -3,6 +3,8 @@
 import { setPlaybackVolume } from "@/app/server/spotify";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Title from "../lib/song/title";
+import Artist from "../lib/song/artist";
 
 const Playback = ({ playback, userID }: any) => {
     const [volume, setVolume]: any = useState(0);
@@ -20,25 +22,32 @@ const Playback = ({ playback, userID }: any) => {
     }, [playback]);
 
     return (
-        <div className="flex flex-col gap-y-3">
-            {/* <h3 className="text-2xl font-medium">Listening</h3> */}
-            <div className="flex gap-x-5">
-                <div className="flex flex-col rounded-lg overflow-hidden">
-                    <div className="relative flex items-center">
-                        <label className="absolute w-full h-full -rotate-90 flex items-center cursor-pointer opacity-0 hover:opacity-100 transition">
-                            <input
-                                className="volume w-full h-full bg-transparent appearance-none overflow-hidden cursor-pointer"
-                                type="range"
-                                value={volume}
-                                min={0}
-                                max={100}
-                                onChange={handleVolumeChange}
-                                onMouseUp={handleVolumeSet}
-                                onTouchEnd={handleVolumeSet}
-                            />
-                        </label>
+        <div className="w-full flex flex-col gap-y-3">
+            <div className="flex flex-wrap w-[160px] gap-1  ">
+                
+                    {/* volume progress bar */}
+                    <div className={`relative h-[150px] w-1 overflow-hidden rounded-full`}>
+                        <div
+                            className="absolute bottom-0 left-0 w-full bg-white transition-all duration-300 ease-out rounded-full"
+                            style={{ height: `${volume}%` }}
+                        ></div>
+                    </div>
+
+                    {/* image */}
+                    <div className="relative flex items-center rounded-md overflow-hidden">
+                        <input
+                            className="-rotate-90 flex items-center absolute w-full h-full opacity-0 overflow-hidden cursor-pointer"
+                            type="range"
+                            value={volume}
+                            min={0}
+                            max={100}
+                            onChange={handleVolumeChange}
+                            onMouseUp={handleVolumeSet}
+                            onTouchEnd={handleVolumeSet}
+                        />
 
                         <Image
+                            className="min-w-[150px] min-h-[150px]"
                             draggable="false"
                             src={playback?.item?.album.images[1]?.url}
                             alt="currently-paying-track-cover"
@@ -46,17 +55,29 @@ const Playback = ({ playback, userID }: any) => {
                             width={150}
                         />
                     </div>
+                
+                
+                    {/* corner */}
+                    <div className="size-1 bg-white rounded-full"></div>
 
-                    <progress
-                        className="h-1 w-full time-range"
-                        value={playback?.progress_ms}
-                        max={playback?.item?.duration_ms}
-                    ></progress>
-                </div>
+                    {/* time progressa bar */}
+                    <div className={`relative w-[150px] h-1 overflow-hidden rounded-full`}>
+                        <div
+                            className="absolute left-0 top-0 h-full bg-white transition-all duration-300 ease-out rounded-full"
+                            style={{
+                                width: `${
+                                    (playback?.progress_ms /
+                                        playback?.item?.duration_ms) *
+                                    100
+                                }%`,
+                            }}
+                        ></div>
+                    </div>
+                
             </div>
             <div>
-                <p>{playback?.item?.name}</p>
-                <p className="text-neutral-400">{playback?.item?.artists?.map((e: any) => ` ${e.name} `)}</p>
+                <Title title={playback?.item?.name} />
+                <Artist artist={playback?.item?.artists} />
             </div>
         </div>
     );

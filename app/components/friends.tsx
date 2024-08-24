@@ -1,102 +1,106 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { getFriends, getUser } from "../server/data";
 import { getPlaybackState, getPlaybackHistory } from "../server/spotify";
 
 import "@/app/css/spotify.css";
-import Link from "next/link";
-import Marquee from "./lib/marquee/marquee";
 import Song from "./lib/song/song";
 
-async function Preview({ userID }: any) {
-    const listening: any = await getPlaybackState(userID);
+const Preview = ({ userID }: any) => {
+    const [listening, setListening]: any = useState(null);
+    const [history, setHistory]: any = useState([]);
 
-    const history: any = await getPlaybackHistory(userID, 4);
+    useEffect(() => {
+        const fetchData = async () => {
+            const listeningData = await getPlaybackState(userID);
+            setListening(listeningData);
+
+            const historyData = await getPlaybackHistory(userID, 4);
+            setHistory(historyData.items);
+        };
+
+        fetchData();
+    }, [userID]);
 
     return (
-        <>
-            <div className="flex flex-col gap-y-5">
-                {listening && (
-                    <div className="flex items-center gap-x-5">
-                        {listening?.is_playing ? (
-                            <div className="music-loader px-3">
-                                <div className="music-loading">
-                                    <div className="music-load"></div>
-                                    <div className="music-load"></div>
-                                    <div className="music-load"></div>
-                                    <div className="music-load"></div>
-                                </div>
+        <div className="flex flex-col gap-y-5">
+            {listening && (
+                <div className="flex items-center gap-x-5">
+                    {listening?.is_playing ? (
+                        <div className="music-loader px-3">
+                            <div className="music-loading">
+                                <div className="music-load"></div>
+                                <div className="music-load"></div>
+                                <div className="music-load"></div>
+                                <div className="music-load"></div>
                             </div>
-                        ) : (
-                            <Image
-                                className="mx-3"
-                                src="/svg/pause-white.svg"
-                                alt="spotify-logo"
-                                height={28}
-                                width={28}
-                            />
-                        )}
-
-                        <Image
-                            className="rounded"
-                            src={listening.item.album.images[2].url}
-                            alt="currentlyPaying-song"
-                            height={64}
-                            width={64}
-                        />
-
-                        <span>
-                            <span className="font-semibold">
-                                <Marquee text={listening?.item.name} />
-                            </span>
-                            <p className="text-neutral-400">
-                                {listening?.item?.artists[0].name}
-                            </p>
-                        </span>
-                    </div>
-                )}
-
-                <div className="flex flex-col gap-y-3">
-                    {history.items.map((e: any) => (
-                        <div
-                            className="flex items-center gap-3"
-                            key={e.track.id}
-                        >
-                            <Song
-                                size={48}
-                                background
-                                title={e?.track.name}
-                                artist={e?.track.artists}
-                                src={e?.track.album.images[2].url}
-                                href={e?.track.external_urls.spotify}
-                            />
                         </div>
-                    ))}
+                    ) : (
+                        <Image
+                            className="mx-3"
+                            src="/svg/pause-white.svg"
+                            alt="spotify-logo"
+                            height={28}
+                            width={28}
+                        />
+                    )}
+
+                    <Song
+                        size={64}
+                        title={listening?.item.name}
+                        artist={listening?.item.artists}
+                        src={listening?.item.album.images[2].url}
+                        href={listening?.item.external_urls.spotify}
+                    />
                 </div>
+            )}
+
+            <div className="flex flex-col gap-y-3">
+                {history?.map((e: any) => (
+                    <div className="flex items-center gap-3" key={e.track.id}>
+                        <Song
+                            size={48}
+                            title={e?.track.name}
+                            artist={e?.track.artists}
+                            src={e?.track.album.images[2].url}
+                            href={e?.track.external_urls.spotify}
+                        />
+                    </div>
+                ))}
             </div>
-        </>
+        </div>
     );
-}
+};
 
-async function Friend({ userID }: any) {
-    /* all user in here are refered to the friend */
+const Friend = ({ userID }: any) => {
+    const [user, setUser]: any = useState();
 
-    const user: any = await getUser(userID);
+    useEffect(() => {
+        const fetchUser = async () => {
+            const userData = await getUser(userID);
+            setUser(userData);
+        };
 
-    const spotifyUser = user.spotifyUser;
+        fetchUser();
+    }, [userID]);
+
+    const spotifyUser: any = user?.spotifyUser;
 
     return (
-        <div className="flex flex-col gap-y-3 p-5 rounded w-fit  bg-neutral-800">
+        <div className="flex flex-col gap-y-3 p-5 rounded w-fit bg-neutral-800">
             <div className="flex items-center gap-5">
                 <Image
                     className="rounded-full"
                     draggable="false"
-                    src={spotifyUser.images[0].url}
-                    alt="spotify-currentlyPaying-song"
+                    src={spotifyUser?.images[0].url}
+                    alt="spotify-currentlyPlaying-song"
                     height={64}
                     width={64}
                 />
                 <h3 className="text-lg font-semibold">
-                    {spotifyUser.display_name}
+                    {spotifyUser?.display_name}
                 </h3>
             </div>
             <div>
@@ -104,20 +108,27 @@ async function Friend({ userID }: any) {
             </div>
         </div>
     );
-}
+};
 
-export default async function Friends({ userID }: any) {
-    const friends: any = await getFriends(userID);
+const Friends = ({ userID }: any) => {
+    const [friends, setFriends] = useState([]);
+
+    useEffect(() => {
+        const fetchFriends = async () => {
+            const friendsData: any = await getFriends(userID);
+            setFriends(friendsData);
+        };
+
+        fetchFriends();
+    }, [userID]);
 
     return (
         <div className="m-5 flex">
             <div className="flex flex-wrap gap-3">
-                {friends.map((e: any) => (
-                    <Link href={"/profile/" + e.friendID} key={e.friendID}>
-                        <Friend userID={e.friendID} />
-                    </Link>
+                {friends?.map((e: any) => (
+                    <Friend key={e.friendID} userID={e.friendID} />
                 ))}
             </div>
         </div>
     );
-}
+};
