@@ -8,7 +8,10 @@ import Link from "next/link";
 
 const Footer = () => (
     <div className="fixed left-0 bottom-0 w-full flex justify-center p-5">
-        <Link href={"https://github.com/kevin5806/MusicShare.git"} target="blank">
+        <Link
+            href={"https://github.com/kevin5806/MusicShare.git"}
+            target="blank"
+        >
             <Image
                 src="/svg/github-white.svg"
                 alt="github-logo"
@@ -35,11 +38,13 @@ export default function Home() {
             )}
 
             <main className="flex h-full items-center justify-center flex-col gap-8">
-                <span className={spray.className}>
-                    <h1 className="flex items-center justify-center text-3xl text-white">
-                        <span className="pt-8">MUSICSHARE</span>
-                    </h1>
-                </span>
+                <Image
+                className="rounded-full"
+                    src="/svg/app-logo.svg"
+                    alt="musicshare-logo"
+                    height={256}
+                    width={256}
+                />
                 <div className="flex flex-col gap-2 items-center">
                     <button
                         className="bg-green-500 flex justify-center items-center gap-x-2 p-3 rounded-md"
