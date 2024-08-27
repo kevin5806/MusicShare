@@ -50,7 +50,11 @@ export const getUser = async (userID: string) => {
     try {
         await connectDB();
 
-        return await Users.findById(userID);
+        const user: any = await Users.findById(userID).lean().exec();
+
+        user._id = user._id.toString();
+
+        return user;
     } catch (error) {
         return { error };
     }
