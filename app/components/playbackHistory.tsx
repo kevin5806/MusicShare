@@ -2,30 +2,10 @@ import { getPlaybackHistory } from "../server/spotify";
 import { ninja } from "../lib/fonts/fonts";
 import Tooltip from "./lib/tooltip/toolTip";
 import Song from "./lib/song/song";
+import { formatTime } from "./lib/formatTime";
 
-const formatTime = (savedDate: any) => {
-    const now: any = new Date();
-    const saved: any = new Date(savedDate);
-    const diffMs = now - saved;
 
-    if (diffMs < 1000 * 60) {
-        return `${Math.floor(diffMs / 1000)}s`;
-    }
-    if (diffMs < 1000 * 60 * 60) {
-        return `${Math.floor(diffMs / (1000 * 60))}m`;
-    }
-    if (diffMs < 1000 * 60 * 60 * 24) {
-        return saved.toTimeString().slice(0, 5);
-    }
-    if (diffMs < 1000 * 60 * 60 * 24 * 30) {
-        return `${saved.toTimeString().slice(0, 5)}, ${saved.getDate()}/${
-            saved.getMonth() + 1
-        }`;
-    }
-    return `${saved.toTimeString().slice(0, 5)}, ${saved.getDate()}/${
-        saved.getMonth() + 1
-    }/${saved.getFullYear()}`;
-};
+
 
 export default async function PlaybackHistory({ userID }: any) {
     const history: any = await getPlaybackHistory(userID, 50);

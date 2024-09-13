@@ -39,7 +39,6 @@ export default function Home() {
 
             <main className="flex h-full items-center justify-center flex-col gap-8">
                 <Image
-                className="rounded-full"
                     src="/svg/app-logo.svg"
                     alt="musicshare-logo"
                     height={256}

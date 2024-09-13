@@ -9,6 +9,8 @@ const Friends_Schema = new Schema({
         type: String,
         required: true,
     },
+    pending: Boolean,
+    owner: String,
 });
 
 const Friends =

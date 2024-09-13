@@ -1,7 +1,7 @@
 "use server";
 
 import axios from "axios";
-import { getToken } from "./data";
+import { getToken } from "./token";
 
 export const getPlaybackState = async (userID: string) => {
     const token = await getToken(userID);
