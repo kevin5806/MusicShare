@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { getFriends, getUser } from "../server/data";
+
 import { getPlaybackState, getPlaybackHistory } from "../server/spotify";
 
 import "@/app/css/spotify.css";
 import Song from "./lib/song/song";
+import { getUser } from "../server/user/user";
+import { getFriends } from "../server/friend/friend";
 
 const Preview = ({ userID }: any) => {
     const [listening, setListening]: any = useState(null);

@@ -1,12 +1,12 @@
 "use server";
 
 import axios from "axios";
-import { connectDB } from "../lib/modules/db/db";
-import Friends from "../lib/modules/db/models/friends";
 import Tokens from "../lib/modules/db/models/tokens";
-import Users from "../lib/modules/db/models/users";
+import { connectDB } from "../lib/modules/db/db";
 
 export const getToken = async (userID: string) => {
+    await connectDB();
+
     const savedToken = await Tokens.findOne({ userID });
 
     const timeCreation: Date = new Date(savedToken.createdAt);
@@ -44,26 +44,4 @@ export const getToken = async (userID: string) => {
     await Tokens.findOneAndReplace({ userID }, { userID, token: newToken });
 
     return token.data.access_token;
-};
-
-export const getUser = async (userID: string) => {
-    try {
-        await connectDB();
-
-        const user: any = await Users.findById(userID).lean().exec();
-
-        user._id = user._id.toString();
-
-        return user;
-    } catch (error) {
-        return { error };
-    }
-};
-
-export const getFriends = async (userID: string) => {
-    await connectDB();
-
-    const friends = await Friends.find({ userID });
-
-    return friends;
 };

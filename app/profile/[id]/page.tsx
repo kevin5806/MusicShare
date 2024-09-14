@@ -1,12 +1,14 @@
 import PlaybackHistory from "@/app/components/playbackHistory";
 import Realtime from "@/app/components/realtime/realtime";
-import { getUser } from "@/app/server/data";
+
 import { getSession } from "@/app/server/session";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { spray, rage } from "@/app/lib/fonts/fonts";
+import Profile from "@/app/components/profile";
+import { getUser } from "@/app/server/user/user";
 
 export default async function Page({ params }: any) {
     const session = await getSession();
@@ -28,18 +30,9 @@ export default async function Page({ params }: any) {
                 <h3 className="text-2xl font-semibold">Dashboard</h3>
             </Link>
 
-            <div className="flex items-center gap-x-5 text-4xl font-semibold">
-                <Image
-                priority
-                    draggable="false"
-                    className="rounded-full"
-                    src={user.spotifyUser.images[1].url}
-                    alt="spotify-currentlyPaying-song"
-                    height={128}
-                    width={128}
-                />
-                <h1>{user.spotifyUser.display_name}</h1>
-            </div>
+            <span className="text-3xl">
+                <Profile spotify={user.spotifyUser} size={128} quality={1} />
+            </span>
 
             <span className={rage.className}>
                 <h1 className="text-3xl">Realtime</h1>

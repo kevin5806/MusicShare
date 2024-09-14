@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { getUser } from "../server/data";
 import Link from "next/link";
+import { getUser } from "../server/user/user";
 
 export default async function PersonalProfile({ userID }: any) {
     const user = await getUser(userID);

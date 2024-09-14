@@ -11,7 +11,7 @@ export const createSession = async (userID: string) => {
 
     const uuid = uuidv4() + uuidv4() + uuidv4() + uuidv4();
 
-    await Sessions.create({ userID, uuid });
+    await Sessions.create({ userID: userID.toString(), uuid });
 
     cookies().set("session", uuid, {
         path: "/",
