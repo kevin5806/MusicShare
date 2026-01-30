@@ -29,17 +29,28 @@ export const GET = async (req: NextRequest) => {
 
     /* Spotify apis token request with authorization code */
 
+    const clientId = process.env.SPOTIFY_CLIENT_ID;
+    const clientSecret =
+        process.env.SPOTIFY_CLIENT_SECRET ?? process.env.SPOTIFY_SECRET;
+
+    if (!clientId || !clientSecret) {
+        return NextResponse.json(
+            { status: 500, data: "missing Spotify credentials" },
+            { status: 500 }
+        );
+    }
+
     const token = await axios.post(
         "https://accounts.spotify.com/api/token",
-        {
+        new URLSearchParams({
             grant_type: "authorization_code",
             code,
             redirect_uri: process.env.SPOTIFY_AUTH_REDIRECT_URL as string,
-        },
+        }),
         {
             auth: {
-                username: process.env.SPOTIFY_CLIENT_ID as string,
-                password: process.env.SPOTIFY_SECRET as string,
+                username: clientId,
+                password: clientSecret,
             },
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
