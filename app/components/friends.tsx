@@ -89,6 +89,8 @@ const Friend = ({ userID }: any) => {
     }, [userID]);
 
     const spotifyUser: any = user?.spotifyUser;
+    const profileImageSrc =
+        spotifyUser?.images?.[0]?.url ?? "/svg/default-avatar.svg";
 
     return (
         <div className="flex flex-col gap-y-3 p-5 rounded w-fit bg-neutral-800">
@@ -96,7 +98,7 @@ const Friend = ({ userID }: any) => {
                 <Image
                     className="rounded-full"
                     draggable="false"
-                    src={spotifyUser?.images[0].url}
+                    src={profileImageSrc}
                     alt="spotify-currentlyPlaying-song"
                     height={64}
                     width={64}

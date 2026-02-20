@@ -4,13 +4,15 @@ import { getUser } from "../server/user/user";
 
 export default async function PersonalProfile({ userID }: any) {
     const user = await getUser(userID);
+    const profileImageSrc =
+        user?.spotifyUser?.images?.[0]?.url ?? "/svg/default-avatar.svg";
 
     return (
         <Link href={"/profile/" + userID}>
             <Image
                 className="rounded-full"
                 draggable="false"
-                src={user?.spotifyUser.images[0].url}
+                src={profileImageSrc}
                 alt="spotify-currentlyPaying-song"
                 height={48}
                 width={48}
