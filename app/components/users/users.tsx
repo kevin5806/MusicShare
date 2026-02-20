@@ -29,11 +29,13 @@ const Users = ({userID}: any) => {
             {render && <List userID={userID} setRender={setRender} />}
             <div
                 onClick={() => setRender((prev) => !prev)}
-                className="flex flex-col gap-y-3 p-5 rounded w-fit min-w-52 bg-neutral-800 cursor-pointer"
+                className="panel-glass flex w-full max-w-[320px] cursor-pointer flex-col gap-y-4 rounded-2xl p-5 transition duration-300 hover:-translate-y-1 hover:border-emerald-300/45"
             >
-                <h1 className="font-semibold text-2xl">Users</h1>
+                <h1 className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-300/90">
+                    Users
+                </h1>
 
-                <div className="flex flex-col gap-y-2 h-full">
+                <div className="flex h-full flex-col gap-y-3">
                     {users?.map((user: any, index: any) => (
                         <div key={index}>
                             <Profile
@@ -44,8 +46,8 @@ const Users = ({userID}: any) => {
                         </div>
                     ))}
                 </div>
-                <div className="shadow shadow-neutral-700/50 bg-neutral-700/50 rounded-md p-1 flex justify-center">
-                    <h2 className="font-semibold">
+                <div className="flex justify-center rounded-md border border-white/10 bg-black/20 p-1.5">
+                    <h2 className="text-sm font-semibold tracking-wide text-neutral-100">
                         {usersCount} users
                     </h2>
                 </div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import { getPlaybackState, getPlaybackHistory } from "../server/spotify";
 
@@ -89,18 +90,22 @@ const Friend = ({ userID }: any) => {
     }, [userID]);
 
     const spotifyUser: any = user?.spotifyUser;
+    const profileImageSrc =
+        spotifyUser?.images?.[0]?.url ?? "/svg/default-avatar.svg";
+    const displayName = spotifyUser?.display_name ?? "";
+    const avatarFallback = displayName.trim().charAt(0).toUpperCase() || "?";
 
     return (
         <div className="flex flex-col gap-y-3 p-5 rounded w-fit bg-neutral-800">
             <div className="flex items-center gap-5">
-                <Image
-                    className="rounded-full"
-                    draggable="false"
-                    src={spotifyUser?.images[0].url}
-                    alt="spotify-currentlyPlaying-song"
-                    height={64}
-                    width={64}
-                />
+                <Avatar className="h-16 w-16 shrink-0">
+                    <AvatarImage
+                        draggable="false"
+                        src={profileImageSrc}
+                        alt="profile-avatar"
+                    />
+                    <AvatarFallback>{avatarFallback}</AvatarFallback>
+                </Avatar>
                 <h3 className="text-lg font-semibold">
                     {spotifyUser?.display_name}
                 </h3>

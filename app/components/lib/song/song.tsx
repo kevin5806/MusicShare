@@ -16,13 +16,14 @@ const Song = ({
 }: any) => {
     const [onHover, setOnHover]: any = useState(false);
 
-    let backgroundClass ="";
+    let backgroundClass = "";
     let hoverClass = "";
-    let paddingClass ="";
+    const customPadding =
+        typeof padding === "number" ? `${padding * 0.25}rem` : undefined;
 
     if (background === true) {
         /* default bg */
-        backgroundClass = "bg-neutral-800";
+        backgroundClass = "bg-neutral-800/80";
     } else if (background) {
         /* personal bg */
         backgroundClass = background;
@@ -36,19 +37,16 @@ const Song = ({
         hoverClass = `hover:${hover}`;
     }
 
-    if (padding) {
-        paddingClass = `p-${padding}`;
-    }
-
     return (
         <div
-            className={`${hoverClass} ${backgroundClass} ${paddingClass} max-w-96 gap-2 w-full flex items-center justify-center rounded overflow-hidden`}
+            className={`${hoverClass} ${backgroundClass} flex w-full min-w-0 items-center gap-2 overflow-hidden rounded-xl`}
+            style={customPadding ? { padding: customPadding } : undefined}
             onMouseEnter={() => setOnHover(true)}
             onMouseLeave={() => setOnHover(false)}
         >
             <Cover onHover={onHover} size={size} src={src} href={href} />
 
-            <div className="flex-grow overflow-hidden">
+            <div className="min-w-0 flex-grow overflow-hidden">
                 <Title title={title} />
                 <Artist artist={artist} />
             </div>

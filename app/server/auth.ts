@@ -30,20 +30,14 @@ export const auth = async () => {
         redirect_uri: process.env.SPOTIFY_AUTH_REDIRECT_URL as string,
         state,
         scope: "user-read-private user-read-email user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state",
-        show_dialog: false,
+        show_dialog: "false",
     };
 
     await AuthCodeRequests.create({
         state,
     });
 
-    redirect(
-        "https://accounts.spotify.com/authorize?" +
-            `client_id=${params.client_id}` +
-            `&response_type=${params.response_type}` +
-            `&redirect_uri=${params.redirect_uri}` +
-            `&state=${params.state}` +
-            `&scope=${params.scope}` +
-            `&show_dialog=${params.show_dialog}`
-    );
+    const searchParams = new URLSearchParams(params).toString();
+
+    redirect(`https://accounts.spotify.com/authorize?${searchParams}`);
 };

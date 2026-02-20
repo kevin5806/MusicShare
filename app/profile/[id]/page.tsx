@@ -1,9 +1,8 @@
 import PlaybackHistory from "@/app/components/playbackHistory";
 import Realtime from "@/app/components/realtime/realtime";
+import Navbar from "@/app/components/lib/navbar/navbar";
 
 import { getSession } from "@/app/server/session";
-import Image from "next/image";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { spray, rage } from "@/app/lib/fonts/fonts";
@@ -19,32 +18,39 @@ export default async function Page({ params }: any) {
     if (user.error) return redirect("/dashboard");
 
     return (
-        <main className="p-5 flex flex-col gap-5">
-            <Link href="/dashboard" className="flex gap-x-3 items-center">
-                <Image
-                    src="/svg/arrow-white.svg"
-                    alt="back-arrow"
-                    height={48}
-                    width={48}
-                />
-                <h3 className="text-2xl font-semibold">Dashboard</h3>
-            </Link>
+        <main className="min-h-screen pb-8">
+            <Navbar userID={session.userID} />
+            <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 p-4 sm:p-6">
+                <section className="panel-glass rounded-3xl p-5 sm:p-6">
+                    <span className="text-3xl">
+                        <Profile
+                            spotify={user.spotifyUser}
+                            size={128}
+                            quality={1}
+                        />
+                    </span>
+                </section>
 
-            <span className="text-3xl">
-                <Profile spotify={user.spotifyUser} size={128} quality={1} />
-            </span>
+                <section className="panel-glass flex min-w-0 flex-col gap-4 rounded-3xl p-5 sm:p-6">
+                    <span className={rage.className}>
+                        <h1 className="text-3xl text-emerald-300/90">
+                            Realtime
+                        </h1>
+                    </span>
 
-            <span className={rage.className}>
-                <h1 className="text-3xl">Realtime</h1>
-            </span>
+                    <Realtime userID={profileID} sessionID={session.userID} />
+                </section>
 
-            <Realtime userID={profileID} sessionID={session.userID} />
+                <section className="panel-glass flex min-w-0 flex-col gap-4 overflow-hidden rounded-3xl p-5 sm:p-6">
+                    <span className={spray.className}>
+                        <h1 className="mt-1 text-3xl">HISTORY</h1>
+                    </span>
 
-            <span className={spray.className}>
-                <h1 className="flex items-center h-15 mt-5 text-xl">HISTORY</h1>
-            </span>
-
-            <PlaybackHistory userID={profileID} />
+                    <div className="min-w-0">
+                        <PlaybackHistory userID={profileID} />
+                    </div>
+                </section>
+            </div>
         </main>
     );
 }
