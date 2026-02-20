@@ -59,11 +59,11 @@ Create a `.env.local` file with:
 
 ```
 SPOTIFY_CLIENT_ID=your_spotify_client_id
-SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
-NEXTAUTH_URL=https://your-domain.com
-MONGODB_URI=mongodb://username:password@host:port/dbname
-EMAIL_USER=you@example.com
-EMAIL_PASS=your-email-password
+SPOTIFY_SECRET=your_spotify_client_secret
+SPOTIFY_AUTH_REDIRECT_URL=http://localhost:3000/api/spotify/callback
+MONGODB_URL=mongodb://username:password@host:port/dbname
+RESEND_SENDING_API_KEY=your_resend_api_key
+RESEND_DOMAIN=your-verified-resend-domain.com
 ```
 
 ### 4. Run Locally
