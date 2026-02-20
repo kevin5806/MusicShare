@@ -20,16 +20,24 @@ export const getToken = async (userID: string) => {
     if (timePassed < savedToken.token.expires_in)
         return savedToken.token.access_token;
 
+    const clientId = process.env.SPOTIFY_CLIENT_ID;
+    const clientSecret =
+        process.env.SPOTIFY_CLIENT_SECRET ?? process.env.SPOTIFY_SECRET;
+
+    if (!clientId || !clientSecret) {
+        throw new Error("Missing Spotify credentials");
+    }
+
     const token = await axios.post(
         "https://accounts.spotify.com/api/token",
-        {
+        new URLSearchParams({
             grant_type: "refresh_token",
             refresh_token: savedToken.token.refresh_token,
-        },
+        }),
         {
             auth: {
-                username: process.env.SPOTIFY_CLIENT_ID as string,
-                password: process.env.SPOTIFY_SECRET as string,
+                username: clientId,
+                password: clientSecret,
             },
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
