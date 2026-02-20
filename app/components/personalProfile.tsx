@@ -12,7 +12,6 @@ export default async function PersonalProfile({ userID }: any) {
     return (
         <Link href={"/profile/" + userID}>
             <Avatar className="h-12 w-12 shrink-0 ring-2 ring-emerald-300/35 transition hover:ring-emerald-300/65">
-            <Avatar className="h-12 w-12 shrink-0">
                 <AvatarImage
                     draggable="false"
                     src={profileImageSrc}

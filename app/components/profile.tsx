@@ -12,21 +12,6 @@ const Profile = ({ spotify, size, quality }: any) => {
     const avatarFallback = displayName.trim().charAt(0).toUpperCase() || "?";
 
     return (
-<<<<<<< Updated upstream
-        <div className="flex items-center gap-3">
-            <Avatar
-                className="shrink-0"
-                style={{ width: avatarSize, height: avatarSize }}
-            >
-                <AvatarImage
-                    draggable="false"
-                    src={profileImageSrc}
-                    alt="profile-avatar"
-                />
-                <AvatarFallback>{avatarFallback}</AvatarFallback>
-            </Avatar>
-            <h3 className="font-medium">{spotify?.display_name}</h3>
-=======
         <div className="flex min-w-0 items-center gap-3">
             <Avatar
                 className="shrink-0 ring-2 ring-white/10 shadow-[0_0_0_1px_rgba(0,0,0,0.2)]"
@@ -45,7 +30,6 @@ const Profile = ({ spotify, size, quality }: any) => {
             >
                 {displayName || "Unknown listener"}
             </h3>
->>>>>>> Stashed changes
         </div>
     );
 };
