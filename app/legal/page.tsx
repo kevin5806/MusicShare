@@ -1,69 +1,77 @@
+import Navbar from "../components/lib/navbar/navbar";
+
 const Legal = () => (
-    <main className="flex justify-center">
-        <div className="flex flex-col gap-8 bg-neutral-800 rounded-md overflow-hidden w-10/12 p-5 m-10 max-w-5xl">
-            <article>
-                <h1 className="text-3xl font-medium">
-                    Cookies & Privacy Policy
-                </h1>
-            </article>
+    <main className="min-h-screen pb-8">
+        <Navbar />
+        <div className="flex justify-center px-4 py-6">
+            <div className="panel-glass m-4 flex w-full max-w-5xl flex-col gap-8 overflow-hidden rounded-3xl p-6 sm:p-8">
+                <article>
+                    <h1 className="text-3xl font-medium sm:text-4xl">
+                        Cookies & Privacy Policy
+                    </h1>
+                </article>
 
-            <article>
-                <p className="font-bold">Last Updated: 24/07/2024</p>
-            </article>
-            <article>
-                <section>
-                    <h2 className="text-2xl font-medium">Important</h2>
-                </section>
-                <section>
-                    <p>
-                        By using this website, you agree to this policy and
-                        acknowledge that you have read and understood it. Please
-                        note that the landing page is the only secure page.
-                        Beyond the landing page, data regarding your usage will
-                        be saved, and cookies will be used.
-                    </p>
-                </section>
-            </article>
-            <article>
-                <section>
-                    <h2 className="text-2xl font-medium">Introduction</h2>
-                </section>
-                <section>
-                    <p>
-                        Welcome to Musicshare! We are committed to protecting
-                        your privacy and ensuring that your personal information
-                        is handled in a safe and responsible manner. This
-                        Cookies & Privacy Policy explains how we collect, use,
-                        and protect your information when you use our services.
-                    </p>
-                </section>
-            </article>
+                <article>
+                    <p className="font-bold">Last Updated: 24/07/2024</p>
+                </article>
+                <article>
+                    <section>
+                        <h2 className="text-2xl font-medium">Important</h2>
+                    </section>
+                    <section>
+                        <p>
+                            By using this website, you agree to this policy and
+                            acknowledge that you have read and understood it.
+                            Please note that the landing page is the only
+                            secure page. Beyond the landing page, data
+                            regarding your usage will be saved, and cookies will
+                            be used.
+                        </p>
+                    </section>
+                </article>
+                <article>
+                    <section>
+                        <h2 className="text-2xl font-medium">Introduction</h2>
+                    </section>
+                    <section>
+                        <p>
+                            Welcome to Musicshare! We are committed to
+                            protecting your privacy and ensuring that your
+                            personal information is handled in a safe and
+                            responsible manner. This Cookies & Privacy Policy
+                            explains how we collect, use, and protect your
+                            information when you use our services.
+                        </p>
+                    </section>
+                </article>
 
-            <article>
-                <section>
-                    <h2 className="text-2xl font-medium">Services Used</h2>
-                </section>
-                <section>
-                    <p>Musicshare uses the following third-party services:</p>
+                <article>
+                    <section>
+                        <h2 className="text-2xl font-medium">Services Used</h2>
+                    </section>
+                    <section>
+                        <p>
+                            Musicshare uses the following third-party services:
+                        </p>
 
-                    <ul className="list-disc pl-6">
-                        <li>MongoDB Atlas</li>
-                        <li>Next.js</li>
-                        <li>Spotify API</li>
-                        <li>Resend</li>
-                        <li>Google Icons</li>
-                        <li>Google Fonts</li>
-                        <li>Dafont</li>
-                        <li>Vercel</li>
-                        <li>GitHub</li>
-                    </ul>
+                        <ul className="list-disc pl-6">
+                            <li>MongoDB Atlas</li>
+                            <li>Next.js</li>
+                            <li>Spotify API</li>
+                            <li>Resend</li>
+                            <li>Google Icons</li>
+                            <li>Google Fonts</li>
+                            <li>Dafont</li>
+                            <li>Vercel</li>
+                            <li>GitHub</li>
+                        </ul>
 
-                    <p>
-                        You can find the privacy policies of these respective
-                        services on their official websites.
-                    </p>
-                </section>
-            </article>
+                        <p>
+                            You can find the privacy policies of these
+                            respective services on their official websites.
+                        </p>
+                    </section>
+                </article>
 
             <article>
                 <section>
@@ -211,6 +219,7 @@ const Legal = () => (
                     </p>
                 </section>
             </article>
+        </div>
         </div>
     </main>
 );
