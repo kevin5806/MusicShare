@@ -47,7 +47,7 @@ const Realtime = ({ userID, sessionID }: any) => {
         <>
             {playback ? (
                 <div
-                    className={`w-fit p-5 bg-neutral-800 rounded transition-transform duration-700 preserve-3d ${
+                    className={`w-fit rounded-2xl border border-white/10 bg-neutral-900/70 p-5 shadow-[0_18px_36px_rgba(0,0,0,0.24)] backdrop-blur-sm transition-transform duration-700 preserve-3d ${
                         flip ? "rotate-x-180" : ""
                     }`}
                 >
@@ -60,7 +60,7 @@ const Realtime = ({ userID, sessionID }: any) => {
                             />
 
                             <button
-                                className="w-full flex justify-center"
+                                className="flex w-full justify-center rounded-md py-1 transition hover:bg-white/10"
                                 onClick={() => {
                                     setFlip(!flip);
                                 }}
@@ -84,7 +84,7 @@ const Realtime = ({ userID, sessionID }: any) => {
                             <Playback userID={userID} playback={playback} />
 
                             <button
-                                className="flex items-center gap-2.5"
+                                className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-black/25 px-2 py-1 transition hover:border-emerald-300/40 hover:bg-emerald-500/10"
                                 onClick={() => {
                                     setFlip(!flip);
                                 }}
@@ -106,7 +106,7 @@ const Realtime = ({ userID, sessionID }: any) => {
                     )}
                 </div>
             ) : (
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/25 p-4">
                     <Image
                         draggable="false"
                         src="/svg/music-white.svg"

@@ -22,7 +22,9 @@ export const newNotification = async (
 export const getNotifications = async (userID: string) => {
     await connectDB();
 
-    const notifications: any = await Notifications.find({ userID });
+    const notifications: any = await Notifications.find({ userID })
+        .sort({ createdAt: -1 })
+        .limit(30);
 
     return notifications;
 };

@@ -2,8 +2,8 @@
 import Marquee from "../marquee/marquee";
 const Title = ({ title }: any) => {
     return (
-        <span className="text-sm font-semibold">
-            <Marquee text={title} />
+        <span className="block text-sm font-semibold">
+            <Marquee text={title ?? ""} />
         </span>
     );
 };
