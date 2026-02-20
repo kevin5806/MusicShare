@@ -4,6 +4,7 @@ import Image from "next/image";
 import { rage, spray, unbounded } from "./lib/fonts/fonts";
 import { auth } from "./server/auth";
 import Link from "next/link";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Navbar from "./components/lib/navbar/navbar";
 
@@ -179,31 +180,3 @@ export default function Home() {
         </>
     );
 };
-
-export default function Home() {
-    return (
-        <main className="flex h-full items-center justify-center flex-col gap-8">
-            <Image
-                src="/svg/app-logo.svg"
-                alt="musicshare-logo"
-                height={256}
-                width={256}
-            />
-            <div className="flex flex-col gap-2 items-center">
-                <form action={auth}>
-                    <SubmitButton />
-                </form>
-                <Link href={"/legal"} className="flex gap-1">
-                    <Image
-                        src="/svg/lock-color.svg"
-                        alt="lock-icon"
-                        height={16}
-                        width={16}
-                    />
-                    <p>Privacy & Cookies Policy</p>
-                </Link>
-            </div>
-            <Footer />
-        </main>
-    );
-}
