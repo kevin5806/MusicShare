@@ -9,7 +9,7 @@ const Card = ({ userID, user, listening, history }: any) => {
     return (
         <div
             onClick={() => router.push(`/profile/${userID}`)}
-            className="flex flex-col gap-y-3 p-5 rounded w-fit bg-neutral-800 cursor-pointer"
+            className="group relative flex w-full max-w-[360px] cursor-pointer flex-col gap-y-4 rounded-2xl border border-white/10 bg-neutral-900/65 p-5 shadow-[0_14px_30px_rgba(0,0,0,0.22)] backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-300/45 hover:bg-neutral-900/90"
         >
             <span className="text-lg">
                 <Profile spotify={user.spotifyUser} quality={1} size={64} />

@@ -27,11 +27,14 @@ const List = ({ userID, setRender }: { userID: any; setRender: any }) => {
     });
 
     return (
-        <div className="absolute flex items-center justify-center w-full h-full p-5 top-0 left-0 z-50">
-            <div className="p-4 flex flex-col gap-y-5 bg-neutral-800 w-full max-w-[1000px] h-full max-h-[600px] rounded-md shadow shadow-neutral-600">
+        <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/45 p-5 backdrop-blur-sm">
+            <div className="panel-glass flex h-full max-h-[600px] w-full max-w-[1000px] flex-col gap-y-5 rounded-2xl p-5">
                 <div className="flex justify-between">
-                    <h1 className="font-medium text-4xl">Users</h1>
-                    <button onClick={() => setRender((prev: any) => !prev)}>
+                    <h1 className="text-4xl font-medium">Users</h1>
+                    <button
+                        onClick={() => setRender((prev: any) => !prev)}
+                        className="rounded-md p-1 transition hover:bg-white/10"
+                    >
                         <Image
                             src="/svg/close.svg"
                             height={24}
@@ -40,9 +43,12 @@ const List = ({ userID, setRender }: { userID: any; setRender: any }) => {
                         />
                     </button>
                 </div>
-                <div className="flex flex-col gap-y-3 h-full overflow-y-scroll">
+                <div className="flex h-full flex-col gap-y-2 overflow-y-auto pr-2">
                     {users.map((user, index) => (
-                        <div className="flex justify-between mr-5" key={index}>
+                        <div
+                            className="mr-2 flex items-center justify-between rounded-xl border border-transparent px-3 py-2 transition hover:border-white/10 hover:bg-white/5"
+                            key={index}
+                        >
                             <Profile
                                 spotify={user.spotifyUser}
                                 size={42}
@@ -57,6 +63,7 @@ const List = ({ userID, setRender }: { userID: any; setRender: any }) => {
                                             `Request sent to ${user.spotifyUser.display_name}`
                                         );
                                     }}
+                                    className="rounded-md p-2 transition hover:bg-emerald-500/20"
                                 >
                                     <Image
                                         src="/svg/addFriends-white.svg"
@@ -68,12 +75,13 @@ const List = ({ userID, setRender }: { userID: any; setRender: any }) => {
                             )}
                         </div>
                     ))}
-                    <div className="flex w-full justify-center">
+                    <div className="flex w-full justify-center pt-2">
                         <Button
                             onClick={() => {
                                 fetch();
                             }}
                             variant={"secondary"}
+                            className="border border-white/10 bg-white/10 hover:bg-white/20"
                         >
                             More
                         </Button>
